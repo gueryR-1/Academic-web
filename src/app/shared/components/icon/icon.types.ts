@@ -19,6 +19,8 @@ export type IconName =
   | 'search' | 'filter' | 'sort' | 'edit' | 'trash' | 'save' | 'copy' | 'paste' | 'plus' | 'minus' | 'x' | 'check' | 'refresh' | 'more-vertical' | 'more-horizontal' | 'print' | 'share' | 'link'
   // ── NUEVOS: Contacto, Educación y UI ──────────────────────────────────────
   | 'clock' | 'calendar' | 'award' | 'map-pin' | 'phone' | 'mail'
+  // ── Educación ──────────────────────────────────────────────────────────────
+  | 'book-open' | 'clipboard-list'
   //social network
   | 'facebook' | 'instagram' | 'youtube';
-export type IconSize = 12 | 16 | 20 | 24 | 28 | 32 | 40 | 48; 
+export type IconSize = 12 | 16 | 20 | 24 | 28 | 32 | 40 | 48;
