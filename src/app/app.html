@@ -1,5 +1,6 @@
 <div class="min-h-screen bg-gris-claro font-sans">
-  <!-- Navbar persistente en todas las rutas -->
+  <!-- Navbar persistente en todas las rutas (se oculta cuando un portal está activo) -->
+  @if (!authState.hideNavbar()) {
   <nav class="bg-azul text-white px-8 py-4 shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto grid grid-cols-3 items-center">
       <div class="flex items-center gap-3 justify-start">
@@ -54,7 +55,8 @@
       </div>
     </div>
   </nav>
+  }
 
-  <!-- Aquí se renderizan todas las rutas -->
+  <!-- Aqui se renderizan todas las rutas -->
   <router-outlet />
 </div>

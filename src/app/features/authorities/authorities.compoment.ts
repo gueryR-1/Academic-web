@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IconComponent } from '../../shared/components/icon/icon.component';
+import { AuthStateService } from '../../shared/services/auth-state.service';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 interface LoginForm {
@@ -18,6 +19,7 @@ interface LoginForm {
   styleUrl: './authorities.component.css',
 })
 export class AuthoritiesComponent {
+  private authState = inject(AuthStateService);
   isLoggedIn = signal(false);
   showPassword = signal(false);
   loginError = signal('');
@@ -82,6 +84,7 @@ export class AuthoritiesComponent {
     ) {
       this.isLoggedIn.set(true);
       this.loginError.set('');
+      this.authState.hide();
     } else {
       this.loginError.set('Credenciales incorrectas. Intente nuevamente.');
     }
@@ -96,5 +99,6 @@ export class AuthoritiesComponent {
     this.isLoggedIn.set(false);
     this.form.set({ username: '', password: '', roleType: 'super-admin' });
     this.loginError.set('');
+    this.authState.show();
   }
 }

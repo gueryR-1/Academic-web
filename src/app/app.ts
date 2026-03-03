@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { IconComponent } from './shared/components/icon/icon.component';
+import { AuthStateService } from './shared/services/auth-state.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,5 @@ import { IconComponent } from './shared/components/icon/icon.component';
 })
 export class App {
   protected readonly title = signal('gnosis-web');
+  protected readonly authState = inject(AuthStateService);
 }

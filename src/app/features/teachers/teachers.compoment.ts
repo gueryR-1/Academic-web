@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IconComponent } from '../../shared/components/icon/icon.component';
+import { AuthStateService } from '../../shared/services/auth-state.service';
 import { TeacherDashboardComponent } from './components/teacher-dashboard/teacher-dashboard.component';
 
 interface LoginForm {
@@ -17,6 +18,7 @@ interface LoginForm {
   styleUrl: './teachers.component.css',
 })
 export class TeachersComponent {
+  private authState = inject(AuthStateService);
   isLoggedIn = signal(false);
   showPassword = signal(false);
   loginError = signal('');
@@ -63,6 +65,7 @@ export class TeachersComponent {
     ) {
       this.isLoggedIn.set(true);
       this.loginError.set('');
+      this.authState.hide();
     } else {
       this.loginError.set('Credenciales incorrectas. Intente nuevamente.');
     }
@@ -72,5 +75,6 @@ export class TeachersComponent {
     this.isLoggedIn.set(false);
     this.form.set({ username: '', password: '' });
     this.loginError.set('');
+    this.authState.show();
   }
 }
